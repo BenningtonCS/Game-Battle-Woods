@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 	public AudioSource playerAudio;
 	public Animator anim;
 
+
 	private float speed = 20f;
 	private float rotationSpeed = 100f;
 
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour {
 
 
 	// Update is called once per frame
-	void Update(){
+	public void Update(){
 		if(Input.GetKeyDown("1")){
 			anim.Play ("breakdance_uprock_to_ground", -1, 0f);
 		}
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour {
 			anim.Play ("yawn", -1, 0f);
 		}
 
-		if(Input.GetMouseButtonDown(0)){
+		if(Input.GetMouseButtonDown(1)){
 
 			int n = Random.Range (0,5);
 
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour {
 		transform.Translate (0, 0, translation);
 		transform.Rotate (0, rotation, 0);	
 
+		//its working totally opposite of the code so I have no idea why its behaving totally different??
 		if ( Input.GetAxis("Vertical") == 0)
 			playerAudio.Play();
 
@@ -91,7 +93,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		/*if (Input.GetKeyDown(KeyCode.Space)) {
 
 
 			if (transform.position.y > 0) {
@@ -103,7 +105,7 @@ public class PlayerController : MonoBehaviour {
 			transform.position += new Vector3 (0, speed * Time.deltaTime, 0).normalized;
 
 
-		}
+		}*/
 
 
 	}

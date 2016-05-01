@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour {
 		transform.Translate (0, 0, translation);
 		transform.Rotate (0, rotation, 0);	
 
-		//its working totally opposite of the code so I have no idea why its behaving totally different??
+		//its working totally opposite of the code so I have no idea why its behaving totally different?
 		if ( Input.GetAxis("Vertical") == 0)
 			playerAudio.Play();
 

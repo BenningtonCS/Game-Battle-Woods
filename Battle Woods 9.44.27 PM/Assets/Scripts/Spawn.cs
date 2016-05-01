@@ -15,7 +15,7 @@ public class Spawn : MonoBehaviour {
 		numberOfEnemies = enemies.Length;
 
 
-		if(numberOfEnemies != 100){
+		if(numberOfEnemies != 50){
 
 			InvokeRepeating ("spawnEnemy", 1, 5f);
 		}

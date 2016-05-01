@@ -9,5 +9,7 @@ public class move : MonoBehaviour {
 	void Update () {
 		float move = moveSpeed * Time.deltaTime;
 		transform.position = Vector3.MoveTowards (transform.position, track.position, move);
+
+	
 	}
 }

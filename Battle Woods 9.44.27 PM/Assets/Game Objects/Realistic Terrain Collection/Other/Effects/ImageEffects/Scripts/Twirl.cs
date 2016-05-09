@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -12,3 +13,19 @@ public class TwirlEffect : ImageEffectBase {
 		ImageEffects.RenderDistortion (material, source, destination, angle, center, radius);
 	}
 }
+=======
+using UnityEngine;
+
+[ExecuteInEditMode]
+[AddComponentMenu("Image Effects/Twirl")]
+public class TwirlEffect : ImageEffectBase {
+	public Vector2  radius = new Vector2(0.3F,0.3F);
+	public float    angle = 50;
+	public Vector2  center = new Vector2 (0.5F, 0.5F);
+
+	// Called by camera to apply image effect
+	void OnRenderImage (RenderTexture source, RenderTexture destination) {
+		ImageEffects.RenderDistortion (material, source, destination, angle, center, radius);
+	}
+}
+>>>>>>> origin/master

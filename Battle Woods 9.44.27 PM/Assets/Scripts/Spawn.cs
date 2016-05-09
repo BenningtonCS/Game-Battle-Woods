@@ -39,7 +39,11 @@ public class Spawn : MonoBehaviour {
 		spawnPoint.x = Random.Range (62,1901);
 
 		//setting the enemies y position to be fixed so that it seems like coming from the underground
+<<<<<<< HEAD
 		spawnPoint.y = 720f;
+=======
+		spawnPoint.y = 520f;
+>>>>>>> origin/master
 
 		//setting the enemies z axis to be random 
 		spawnPoint.z = Random.Range (1617,3100);

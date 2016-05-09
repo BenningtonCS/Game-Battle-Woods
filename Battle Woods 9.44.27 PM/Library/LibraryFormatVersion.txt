@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 unityRebuildLibraryVersion: 11
 unityForwardCompatibleVersion: 40
+=======
+unityRebuildLibraryVersion: 11
+unityForwardCompatibleVersion: 40
+>>>>>>> origin/master

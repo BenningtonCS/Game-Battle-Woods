@@ -17,8 +17,11 @@ public class move : MonoBehaviour {
 
 	void Update () {
 
+<<<<<<< HEAD
 		transform.LookAt (track);
 
+=======
+>>>>>>> origin/master
 		//creating a variable for moving the enemy after spawning from some point
 		float move = moveSpeed * Time.deltaTime;
 

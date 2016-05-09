@@ -25,6 +25,11 @@ public class FireBallShooter : MonoBehaviour {
 		
 		}
 
+
+		//if(prefab.transform.position.y < 525){
+		//	prefab.SetActive (false);
+		//}
+
 	}
 		
 	IEnumerator ThrowBall() {

@@ -5,7 +5,7 @@ public class move : MonoBehaviour {
 
 
 	public Transform track;
-	private float moveSpeed = 3;
+	private float moveSpeed = 13;
 	Animator enemyAnim;
 
 
@@ -16,6 +16,10 @@ public class move : MonoBehaviour {
 	}
 
 	void Update () {
+
+		//making enemy rotate around the player using AI rotation
+
+		transform.LookAt (track);
 
 		//creating a variable for moving the enemy after spawning from some point
 		float move = moveSpeed * Time.deltaTime;

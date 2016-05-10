@@ -26,7 +26,7 @@ public class FireBallShooter : MonoBehaviour {
 		}
 
 
-		//if(prefab.transform.position.y < 525){
+		//if(prefab.transform.position.y < 500){
 		//	prefab.SetActive (false);
 		//}
 

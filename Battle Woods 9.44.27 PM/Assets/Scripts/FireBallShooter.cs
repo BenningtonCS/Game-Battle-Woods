@@ -7,6 +7,7 @@ public class FireBallShooter : MonoBehaviour {
 	GameObject prefab;
 	float speedOfFireBall = 40;
 	PlayerController playerController;
+	public static int numberOfFireBalls = 10;
 
 	// Use this for initialization
 	void Start () {
@@ -20,9 +21,10 @@ public class FireBallShooter : MonoBehaviour {
 
 		//using left mouse button to through fireball into the enemies
 		if(Input.GetMouseButtonDown(0)){
-
-			StartCoroutine(ThrowBall ());
-		
+			if(numberOfFireBalls > 0){
+				StartCoroutine(ThrowBall ());
+			};
+			numberOfFireBalls = numberOfFireBalls - 1;
 		}
 
 
@@ -50,4 +52,7 @@ public class FireBallShooter : MonoBehaviour {
 		//giving this fireball a velosity of forward movement along with the speed
 		rb.velocity = transform.forward * speedOfFireBall;
 	}
+
+
+
 }

@@ -96,6 +96,9 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Pick Up")) {
+
+			//increasing the number of fire balls every time player gets the treasure boxes by 10
+			FireBallShooter.numberOfFireBalls = FireBallShooter.numberOfFireBalls + 10;
             other.gameObject.SetActive(false);
         }
     }

@@ -3,9 +3,13 @@ using System.Collections;
 
 public class move : MonoBehaviour {
 
-
+	// this is for tracking the player which is an empty game object attached to the player
 	public Transform track;
+
+	// this is the movement speed of the enemy after spawning while following the player
 	private float moveSpeed = 13;
+
+	// animation of the enemies
 	Animator enemyAnim;
 
 
@@ -18,7 +22,6 @@ public class move : MonoBehaviour {
 	void Update () {
 
 		//making enemy rotate around the player using AI rotation
-
 		transform.LookAt (track);
 
 		//creating a variable for moving the enemy after spawning from some point

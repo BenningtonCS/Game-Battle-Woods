@@ -10,10 +10,13 @@ public class PlayerController : MonoBehaviour {
 	FireBallShooter fireBallShooter;
 
 	// for controlling the speed of the player
-	private float speed = 20f;
+	private float speed = 25f;
 
 	// for controlling the rotation of the player
 	private float rotationSpeed = 100f;
+
+	//death points of the player
+	public int playerDeathPoints = 0;
 
 
 	// Use this for initialization
@@ -118,6 +121,7 @@ public class PlayerController : MonoBehaviour {
 
 				anim.SetBool ("isRunning", false);
 			}
+
 		}
 
 
@@ -130,10 +134,20 @@ public class PlayerController : MonoBehaviour {
 			//increasing the number of fire balls every time player gets the treasure boxes by 10
 			fireBallShooter.numberOfFireBalls = fireBallShooter.numberOfFireBalls + 10;
 
-			//and then setting it to false that is destroying it
+			// and then setting it to false that is destroying it
 			other.gameObject.SetActive(false);
 		}
-	}
 
+		//
+		if(other.gameObject.CompareTag("Enemy")){
+
+			if(playerDeathPoints > 10){
+				anim.SetBool ("isDead", true);
+			}
+
+			playerDeathPoints = playerDeathPoints + 1;
+		}
+
+	}
 
 }

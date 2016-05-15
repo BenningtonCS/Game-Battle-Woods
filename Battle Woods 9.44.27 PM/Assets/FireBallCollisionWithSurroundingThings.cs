@@ -5,15 +5,17 @@ public class FireBallCollisionWithSurroundingThings : MonoBehaviour {
 
 
 
-	/*void OnTriggerEnter(Collider other) {
+	void OnTriggerEnter(Collider other) {
+		// checking whether the fire ball collides enemy or not
 		if (other.gameObject.CompareTag("Enemy")) {
+
+			//and then setting it to false that is destroying it
 			other.gameObject.SetActive(false);
 		}
-	}*/
+	}
 
-	/*
 	// this is the script function which is going to send trigger events
-	void OnTriggerEnter(Collider col){
+	/*void OnTriggerEnter(Collider col){
 
 		switch(col.tag)
 		{

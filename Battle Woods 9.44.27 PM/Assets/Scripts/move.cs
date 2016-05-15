@@ -7,7 +7,7 @@ public class move : MonoBehaviour {
 	public Transform track;
 
 	// this is the movement speed of the enemy after spawning while following the player
-	private float moveSpeed = 13;
+	private float moveSpeed = 6;
 
 	// animation of the enemies
 	Animator enemyAnim;

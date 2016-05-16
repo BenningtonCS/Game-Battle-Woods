@@ -3,7 +3,11 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	public AudioSource playerAudio;
+	AudioSource playerAudio;
+	public AudioClip shootAudio;
+	public AudioClip enemyDeathAudio; 
+	public AudioClip playerDeathAudio;
+
 	public Animator anim;
     
 	// inheritating from another class FireBallShooter
@@ -101,6 +105,7 @@ public class PlayerController : MonoBehaviour {
 		
 		}
 
+
 			// moving the player accoring to the arrow keys pressed
 			float translation = Input.GetAxis ("Vertical") * speed;
 			float rotation = Input.GetAxis ("Horizontal") * rotationSpeed;
@@ -121,7 +126,6 @@ public class PlayerController : MonoBehaviour {
 
 				anim.SetBool ("isRunning", false);
 			}
-
 		}
 
 
@@ -144,10 +148,15 @@ public class PlayerController : MonoBehaviour {
 			if(playerDeathPoints > 10){
 				anim.SetBool ("isDead", true);
 			}
-
 			playerDeathPoints = playerDeathPoints + 1;
 		}
+	}
 
+	//When player throws the bomb this audio is played.
+	public void PlayShootClip () {
+		playerAudio.PlayOneShot(shootAudio, 1.0f);
+		//Debug.Log ("play shoot");
 	}
 
 }
+	

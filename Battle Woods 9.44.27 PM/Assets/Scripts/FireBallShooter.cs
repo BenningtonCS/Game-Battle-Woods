@@ -33,18 +33,21 @@ public class FireBallShooter : MonoBehaviour {
 			
 			// checking whether the number of fire balls are there or not
 			if(numberOfFireBalls > 0){
+				// for palying the audio
+				playerController.PlayShootClip();
 
 				// calling ThrowBall function so that player animates and throws fire ball perfectly 
 				StartCoroutine(ThrowBall ());
-			};
 
-			//decreasing the number of fire balls by one every time player throws one fire ball
-			numberOfFireBalls = numberOfFireBalls - 1;
+
+				//decreasing the number of fire balls by one every time player throws one fire ball
+				numberOfFireBalls = numberOfFireBalls - 1;
+			};
 		}
 	}
 		
 	IEnumerator ThrowBall() {
-		
+
 		// now using the class called PlayerController for playing the animation
 		// to play the animation of zombie attacking
 		playerController.anim.Play("zombie_attack", -1, 0f);
@@ -64,7 +67,5 @@ public class FireBallShooter : MonoBehaviour {
 		//giving this fireball a velosity of forward movement along with the speed
 		rb.velocity = transform.forward * speedOfFireBall;
 	}
-
-
 
 }

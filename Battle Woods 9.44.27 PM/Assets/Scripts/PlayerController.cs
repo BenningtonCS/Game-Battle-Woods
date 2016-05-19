@@ -142,12 +142,23 @@ public class PlayerController : MonoBehaviour {
 			other.gameObject.SetActive(false);
 		}
 
-		//
+		// checking whether the player the triggers the enemies 
+		// if so then manipulating player death points which is health of the player depending on the enemies hit points
 		if(other.gameObject.CompareTag("Enemy")){
 
+			// playing the player's screaming sound when it loses it's all health points
+			PlayPlayerDeathClip();
+
+			// checking whether the player's heath (player dead points) is greater than 10 or not 
+			// which is logically assigning certain health points to the player
 			if(playerDeathPoints > 10){
+
+
+				// if so then dead animation of the player is on
 				anim.SetBool ("isDead", true);
 			}
+
+			// similarly if player triggers : logically speaking enemies hit the player then increasing the death points of the player 
 			playerDeathPoints = playerDeathPoints + 1;
 		}
 	}
@@ -156,6 +167,17 @@ public class PlayerController : MonoBehaviour {
 	public void PlayShootClip () {
 		playerAudio.PlayOneShot(shootAudio, 1.0f);
 		//Debug.Log ("play shoot");
+	}
+
+
+	//When player throws the bomb and if it hits the player than this sound clip is on
+	public void PlayEnemyDeathClip () {
+		playerAudio.PlayOneShot(enemyDeathAudio, 1.0f);
+	}
+
+	//When player losses it's health than this audio is played
+	public void PlayPlayerDeathClip () {
+		playerAudio.PlayOneShot(playerDeathAudio, 1.0f);
 	}
 
 }

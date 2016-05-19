@@ -33,7 +33,8 @@ public class FireBallShooter : MonoBehaviour {
 			
 			// checking whether the number of fire balls are there or not
 			if(numberOfFireBalls > 0){
-				// for palying the audio
+				
+				// for palying the audio when the player shoots the fire balls
 				playerController.PlayShootClip();
 
 				// calling ThrowBall function so that player animates and throws fire ball perfectly 

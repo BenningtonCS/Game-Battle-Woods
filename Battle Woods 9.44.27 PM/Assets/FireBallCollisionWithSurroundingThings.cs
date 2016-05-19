@@ -3,14 +3,26 @@ using System.Collections;
 
 public class FireBallCollisionWithSurroundingThings : MonoBehaviour {
 
+	// for inheriting the 
+//	PlayerController playerController;
 
+	void Start(){
+		//playerController = GetComponent<PlayerController>();
+	}
+		
 
 	void OnTriggerEnter(Collider other) {
 		// checking whether the fire ball collides enemy or not
 		if (other.gameObject.CompareTag("Enemy")) {
 
+			// similarly palying the enemy screaming sound when it gets hit from the fire ball
+			//playerController.PlayEnemyDeathClip();
+			GetComponent<AudioSource>().Play();
+
 			//and then setting it to false that is destroying it
 			other.gameObject.SetActive(false);
+
+
 		}
 	}
 

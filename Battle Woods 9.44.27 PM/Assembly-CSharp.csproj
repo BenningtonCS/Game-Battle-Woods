@@ -45,7 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\FireBallCollisionWithSurroundingThings.cs" />
+     <Compile Include="Assets\Bar.cs" />
      <Compile Include="Assets\Game Objects\Realistic Terrain Collection\Other\Effects\ImageEffects\Scripts\Antialiasing.cs" />
      <Compile Include="Assets\Game Objects\Realistic Terrain Collection\Other\Effects\ImageEffects\Scripts\Bloom.cs" />
      <Compile Include="Assets\Game Objects\Realistic Terrain Collection\Other\Effects\ImageEffects\Scripts\BloomAndFlares.cs" />
@@ -85,11 +85,12 @@
      <Compile Include="Assets\Game Objects\Realistic Terrain Collection\Other\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
      <Compile Include="Assets\Game Objects\Realistic Terrain Collection\Other\Effects\ImageEffects\Scripts\Vortex.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\FireBallCollisionWithSurroundingThings.cs" />
      <Compile Include="Assets\Scripts\FireBallShooter.cs" />
+     <Compile Include="Assets\Scripts\Move.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Spawn.cs" />
      <Compile Include="Assets\Scripts\menuScript.cs" />
-     <Compile Include="Assets\Scripts\move.cs" />
      <None Include="Assets\Game Objects\Realistic Terrain Collection\Other\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Game Objects\Realistic Terrain Collection\Other\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\Game Objects\Realistic Terrain Collection\Other\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />

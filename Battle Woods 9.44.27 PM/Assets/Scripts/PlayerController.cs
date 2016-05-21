@@ -20,8 +20,20 @@ public class PlayerController : MonoBehaviour {
 	private float rotationSpeed = 100f;
 
 	//death points of the player
-	public int playerDeathPoints = 0;
+	public float playerDeathPoints = 0.5f;
 
+	// giving player a current health for loading the health bar
+	public float currentHealth = 0f;
+
+	// maximum health points given to the player 
+	public float max_health = 100f;
+
+	// giving the player a game object health bar so that user can track the health of the player
+	public GameObject healthBar;
+
+	// for inheritating the class menuscript 
+	// so that user'd also play again
+	MenuScript menuScript;
 
 	// Use this for initialization
 	void Start(){
@@ -34,6 +46,12 @@ public class PlayerController : MonoBehaviour {
 
 		// initializing the class FireBallShooter to make some changes in another class according to some effects of this class
 		fireBallShooter = GetComponent<FireBallShooter> ();
+
+		// to inheritate the menuScript after the players dead
+		menuScript = GetComponent<MenuScript>();
+
+		// at assigning the current health of the player to be maximum health so that we'd decrease the health bar according to the hit points of the enemies
+		currentHealth = max_health;
 
 	}
 
@@ -151,15 +169,26 @@ public class PlayerController : MonoBehaviour {
 
 			// checking whether the player's heath (player dead points) is greater than 10 or not 
 			// which is logically assigning certain health points to the player
-			if(playerDeathPoints > 10){
+			if(playerDeathPoints >= max_health){
 
 
 				// if so then dead animation of the player is on
 				anim.SetBool ("isDead", true);
+
+				//WaitForSeconds (1);
+
+				// after the player death 
+				// giving user to play it many chances
+				// that is user will be able to continue it
+				menuScript.StartLevel();
 			}
 
 			// similarly if player triggers : logically speaking enemies hit the player then increasing the death points of the player 
 			playerDeathPoints = playerDeathPoints + 1;
+
+			// for decreasing the player's health according to the player bar
+			InvokeRepeating("DecreaseHealth",0f,0f);
+
 		}
 	}
 
@@ -178,6 +207,28 @@ public class PlayerController : MonoBehaviour {
 	//When player losses it's health than this audio is played
 	public void PlayPlayerDeathClip () {
 		playerAudio.PlayOneShot(playerDeathAudio, 1.0f);
+	}
+
+	// creating DecreaseHealth method to use it in invoke repeating
+	void DecreaseHealth(){
+		// so decreasing the player's health one point by another point
+		currentHealth -= 1f;
+
+		// clamping the player health according to the health bar of the player 
+		// so that we'd decrease the health bar according to the enemies hit points
+		float calc_Health = currentHealth / max_health;
+
+		// and then also calling another function called SetHealthBar
+		// where we will be able to decrease the health bar according to the player health points available and enemies hit points
+		SetHealthBar(calc_Health);
+	}
+
+	// creating the SetHealthBar method for tracking the progression of the health decreasement of the player according the given health points of the player
+	public void SetHealthBar(float myHealth){
+
+		// so transforming the healthbar position with different color 
+		// so that we'd so the progression of the decreasement of the player health points
+		healthBar.transform.localScale = new Vector3 (myHealth, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
 	}
 
 }

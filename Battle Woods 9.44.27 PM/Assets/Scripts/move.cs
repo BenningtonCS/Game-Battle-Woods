@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class move : MonoBehaviour {
+public class Move : MonoBehaviour {
 
 	// this is for tracking the player which is an empty game object attached to the player
 	public Transform track;

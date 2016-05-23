@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour {
 				// after the player death 
 				// giving user to play it many chances
 				// that is user will be able to continue it
-				menuScript.StartLevel();
+				//menuScript.StartLevel();
 			}
 
 			// similarly if player triggers : logically speaking enemies hit the player then increasing the death points of the player 

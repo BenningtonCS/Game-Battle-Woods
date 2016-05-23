@@ -31,10 +31,6 @@ public class PlayerController : MonoBehaviour {
 	// giving the player a game object health bar so that user can track the health of the player
 	public GameObject healthBar;
 
-	// for inheritating the class menuscript 
-	// so that user'd also play again
-	MenuScript menuScript;
-
 	// Use this for initialization
 	void Start(){
 
@@ -46,9 +42,6 @@ public class PlayerController : MonoBehaviour {
 
 		// initializing the class FireBallShooter to make some changes in another class according to some effects of this class
 		fireBallShooter = GetComponent<FireBallShooter> ();
-
-		// to inheritate the menuScript after the players dead
-		menuScript = GetComponent<MenuScript>();
 
 		// at assigning the current health of the player to be maximum health so that we'd decrease the health bar according to the hit points of the enemies
 		currentHealth = max_health;
@@ -180,7 +173,7 @@ public class PlayerController : MonoBehaviour {
 				// after the player death 
 				// giving user to play it many chances
 				// that is user will be able to continue it
-				//menuScript.StartLevel();
+				Application.LoadLevel (0);
 			}
 
 			// similarly if player triggers : logically speaking enemies hit the player then increasing the death points of the player 

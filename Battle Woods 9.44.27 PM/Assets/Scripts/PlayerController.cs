@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour {
 	// inheritating from another class FireBallShooter
 	FireBallShooter fireBallShooter;
 
+	//
+	Move move;
+
 	// for controlling the speed of the player
 	private float speed = 25f;
 
@@ -31,6 +34,9 @@ public class PlayerController : MonoBehaviour {
 	// giving the player a game object health bar so that user can track the health of the player
 	public GameObject healthBar;
 
+	// to count the number of fire balls
+	private int countFireBall;
+
 	// Use this for initialization
 	void Start(){
 
@@ -43,9 +49,14 @@ public class PlayerController : MonoBehaviour {
 		// initializing the class FireBallShooter to make some changes in another class according to some effects of this class
 		fireBallShooter = GetComponent<FireBallShooter> ();
 
+		//
+		move = GetComponent<Move> ();
+
 		// at assigning the current health of the player to be maximum health so that we'd decrease the health bar according to the hit points of the enemies
 		currentHealth = max_health;
 
+		// setting our count to be zero at first
+		countFireBall = fireBallShooter.numberOfFireBalls;
 	}
 
 
@@ -160,6 +171,10 @@ public class PlayerController : MonoBehaviour {
 			// playing the player's screaming sound when it loses it's all health points
 			PlayPlayerDeathClip();
 
+			//
+			//move.enemyAnim.SetBool ("isEnemyAttacking", true);
+
+
 			// checking whether the player's heath (player dead points) is greater than 10 or not 
 			// which is logically assigning certain health points to the player
 			if(playerDeathPoints >= max_health){
@@ -168,7 +183,9 @@ public class PlayerController : MonoBehaviour {
 				// if so then dead animation of the player is on
 				anim.SetBool ("isDead", true);
 
-				//WaitForSeconds (1);
+
+				// this is for making the whole game to wait for a second so that we'd show the dead animation of player before the restarting of the game
+				StartCoroutine(PlayerDeadAnimationTimerMethod());
 
 				// after the player death 
 				// giving user to play it many chances
@@ -222,6 +239,15 @@ public class PlayerController : MonoBehaviour {
 		// so transforming the healthbar position with different color 
 		// so that we'd so the progression of the decreasement of the player health points
 		healthBar.transform.localScale = new Vector3 (myHealth, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+	}
+
+	//
+	public IEnumerator PlayerDeadAnimationTimerMethod() {
+		
+		anim.SetBool ("isDead", true);
+
+		yield return new WaitForSeconds(2);
+		yield break;
 	}
 
 }

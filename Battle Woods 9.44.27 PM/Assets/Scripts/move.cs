@@ -10,7 +10,7 @@ public class Move : MonoBehaviour {
 	private float moveSpeed = 6;
 
 	// animation of the enemies
-	Animator enemyAnim;
+	public Animator enemyAnim;
 
 
 	void Start(){

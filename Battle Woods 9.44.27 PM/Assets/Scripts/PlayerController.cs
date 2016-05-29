@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip playerDeathAudio;
 	public AudioClip tresureBoxAudio;
 	public AudioClip winningAudio;
+	public AudioClip loseAudio;
 
 	public Text fireballCountText;
 	public int fireballCount;
@@ -139,8 +140,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		
 		}
-
-
+			
 			// moving the player accoring to the arrow keys pressed
 			float translation = Input.GetAxis ("Vertical") * speed;
 			float rotation = Input.GetAxis ("Horizontal") * rotationSpeed;
@@ -162,8 +162,7 @@ public class PlayerController : MonoBehaviour {
 				anim.SetBool ("isRunning", false);
 			}
 		}
-
-
+		
 	//
 	void OnTriggerEnter(Collider other) {
 		// checking whether the player collides our treasure box or not 
@@ -197,8 +196,7 @@ public class PlayerController : MonoBehaviour {
 			//
 			//move.enemyAnim.SetBool ("isEnemyAttacking", true);
 
-
-
+		
 			// checking whether the player's heath (player dead points) is greater than 10 or not 
 			// which is logically assigning certain health points to the player
 			if(playerDeathPoints >= max_health){
@@ -206,9 +204,12 @@ public class PlayerController : MonoBehaviour {
 				// this is for making the whole game to wait for a second so that we'd show the dead animation of player before the restarting of the game
 				StartCoroutine(PlayerDeadAnimationTimerMethod());
 
+				//losing audio when player is dead
+				PlayLosingClip ();
+
 			}
 
-			// similarly if player triggers : logically speaking enemies hit the player then increasing the death points of the player 
+			// similarly if player triggers : logically speaking, if enemies hits the player then increasing the death points of the player 
 			playerDeathPoints = playerDeathPoints + 1;
 
 			// for decreasing the player's health according to the player bar
@@ -242,7 +243,6 @@ public class PlayerController : MonoBehaviour {
 	}
 
 
-
 	//When player throws the bomb this audio is played.
 	public void PlayShootClip () {
 		playerAudio.PlayOneShot(shootAudio, 1.0f);
@@ -270,6 +270,11 @@ public class PlayerController : MonoBehaviour {
 		playerAudio.PlayOneShot (winningAudio, 1.0f);
 	}
 
+	public void PlayLosingClip() {
+		playerAudio.PlayOneShot (loseAudio, 1.0f);
+
+	}
+
 	// creating DecreaseHealth method to use it in invoke repeating
 	void DecreaseHealth(){
 		// so decreasing the player's health one point by another point
@@ -295,11 +300,12 @@ public class PlayerController : MonoBehaviour {
 	//
 	public IEnumerator PlayerDeadAnimationTimerMethod() {
 
+
 		// playing player dead animation for 3 seconds
 		anim.SetBool ("isDead", true);
 
 		// waiting for three seconds
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(4f);
 
 		// after three seconds restarting the game
 		// after the player death 

@@ -9,11 +9,15 @@ public class CameraController : MonoBehaviour {
 
 	void Start () 
 	{
-		offset = transform.position - Player.transform.position;
+		// this was our default camera position 
+		// but there was difficulty in rotating camera and seeing the other side of scene
+		//offset = transform.position - Player.transform.position;
 	}
 
 	void Update () 
 	{
-		transform.position = Player.transform.position + offset;	
+
+		//transform.position = Player.transform.position + offset;
+
 	}
 }

@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour {
 		// initializing the class FireBallShooter to make some changes in another class according to some effects of this class
 		fireBallShooter = GetComponent<FireBallShooter> ();
 
-<<<<<<< HEAD
+
 		//fireball count
 		fireballCount = 10;
 
@@ -61,9 +61,6 @@ public class PlayerController : MonoBehaviour {
 		SetCountText ();
 
 		//moving
-=======
-		//
->>>>>>> origin/master
 		move = GetComponent<Move> ();
 
 		// at assigning the current health of the player to be maximum health so that we'd decrease the health bar according to the hit points of the enemies
@@ -195,10 +192,8 @@ public class PlayerController : MonoBehaviour {
 			//
 			//move.enemyAnim.SetBool ("isEnemyAttacking", true);
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
+
 			// checking whether the player's heath (player dead points) is greater than 10 or not 
 			// which is logically assigning certain health points to the player
 			if(playerDeathPoints >= max_health){
@@ -206,10 +201,7 @@ public class PlayerController : MonoBehaviour {
 				// if so then dead animation of the player is on
 				anim.SetBool ("isDead", true);
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 				// this is for making the whole game to wait for a second so that we'd show the dead animation of player before the restarting of the game
 				StartCoroutine(PlayerDeadAnimationTimerMethod());
 

@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip shootAudio;
 	public AudioClip enemyDeathAudio; 
 	public AudioClip playerDeathAudio;
+	public AudioClip tresureBoxAudio;
+	public AudioClip winningAudio;
 
 	public Text fireballCountText;
 	public int fireballCount;
@@ -167,7 +169,10 @@ public class PlayerController : MonoBehaviour {
 		// checking whether the player collides our treasure box or not 
 		// if it collides than doing two things at a time
 		if (other.gameObject.CompareTag("Pick Up")) {
-			
+
+			//
+			PlayTreasureBoxClip();
+
 			//increasing the number of fire balls every time player gets the treasure boxes by 10
 			fireBallShooter.numberOfFireBalls = fireBallShooter.numberOfFireBalls + 10;
 
@@ -198,17 +203,9 @@ public class PlayerController : MonoBehaviour {
 			// which is logically assigning certain health points to the player
 			if(playerDeathPoints >= max_health){
 
-				// if so then dead animation of the player is on
-				anim.SetBool ("isDead", true);
-
-
 				// this is for making the whole game to wait for a second so that we'd show the dead animation of player before the restarting of the game
 				StartCoroutine(PlayerDeadAnimationTimerMethod());
 
-				// after the player death 
-				// giving user to play it many chances
-				// that is user will be able to continue it
-				Application.LoadLevel (0);
 			}
 
 			// similarly if player triggers : logically speaking enemies hit the player then increasing the death points of the player 
@@ -218,6 +215,11 @@ public class PlayerController : MonoBehaviour {
 			InvokeRepeating("DecreaseHealth",0f,0f);
 
 		}
+
+		if (other.gameObject.CompareTag ("Girl")) {
+			StartCoroutine (PresentingWinText());
+		}
+
 	}
 
 	//fireballCount function
@@ -225,6 +227,21 @@ public class PlayerController : MonoBehaviour {
 		//setting the starting value of the UI text Text property
 		fireballCountText.text = "Fire Balls: " + fireballCount.ToString ();
 	}
+
+	// win text method
+	// using the same fireballs number text i.e same canvas
+	// overriding with win text
+	public void WinText(){
+		
+		//
+		PlayWinningClip();
+
+		fireballCountText.text = "You Won";
+		fireballCountText.color = Color.black;
+		fireballCountText.transform.position = new Vector2 (Screen.width/2,Screen.height/2);
+	}
+
+
 
 	//When player throws the bomb this audio is played.
 	public void PlayShootClip () {
@@ -241,6 +258,16 @@ public class PlayerController : MonoBehaviour {
 	//When player losses it's health than this audio is played
 	public void PlayPlayerDeathClip () {
 		playerAudio.PlayOneShot(playerDeathAudio, 1.0f);
+	}
+
+	//
+	public void PlayTreasureBoxClip(){
+		playerAudio.PlayOneShot (tresureBoxAudio, 1.0f);
+	}
+
+	//
+	public void PlayWinningClip(){
+		playerAudio.PlayOneShot (winningAudio, 1.0f);
 	}
 
 	// creating DecreaseHealth method to use it in invoke repeating
@@ -267,11 +294,27 @@ public class PlayerController : MonoBehaviour {
 
 	//
 	public IEnumerator PlayerDeadAnimationTimerMethod() {
-		
+
+		// playing player dead animation for 3 seconds
 		anim.SetBool ("isDead", true);
 
-		yield return new WaitForSeconds(2);
-		yield break;
+		// waiting for three seconds
+		yield return new WaitForSeconds(3f);
+
+		// after three seconds restarting the game
+		// after the player death 
+		// giving user to play it many chances
+		// that is user will be able to continue it
+		Application.LoadLevel(0);
+	}
+
+	public IEnumerator PresentingWinText(){
+
+		WinText ();
+
+		yield return new WaitForSeconds (2.5f);
+
+		Application.LoadLevel (0);
 	}
 
 }

@@ -86,6 +86,7 @@
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\FireBallCollisionWithSurroundingThings.cs" />
      <Compile Include="Assets\Scripts\FireBallShooter.cs" />
+     <Compile Include="Assets\Scripts\JulientController.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />

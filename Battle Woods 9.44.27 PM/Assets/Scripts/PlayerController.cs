@@ -239,6 +239,7 @@ public class PlayerController : MonoBehaviour {
 
 		fireballCountText.text = "You Won";
 		fireballCountText.color = Color.black;
+		//fireballCountText.fontSize = 10;
 		fireballCountText.transform.position = new Vector2 (Screen.width/2,Screen.height/2);
 	}
 
@@ -305,7 +306,7 @@ public class PlayerController : MonoBehaviour {
 		anim.SetBool ("isDead", true);
 
 		// waiting for three seconds
-		yield return new WaitForSeconds(4f);
+		yield return new WaitForSeconds(2f);
 
 		// after three seconds restarting the game
 		// after the player death 

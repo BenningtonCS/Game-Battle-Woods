@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour {
 		countFireBall = fireBallShooter.numberOfFireBalls;
 	}
 
-
+		
 	// Update is called once per frame
 	public void Update(){
 
